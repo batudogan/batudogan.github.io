@@ -12,22 +12,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
 <style>
-  /* =====================================================================
-     EDIT YOUR DETAILS HERE
-     The page reads these from CSS custom content + the marked spots below.
-     Search for  Batuhan Doğan  and  YOUR-PHONE  to replace everything.
-     ===================================================================== */
-
   :root {
-    --bg:        #FAFAF7;   /* off-white page */
-    --bg-tint:   #F2F1EA;   /* faint band background */
-    --ink:       #16181D;   /* near-black text */
-    --ink-soft:  #4A4E57;   /* secondary text */
-    --ink-faint: #8A8E97;   /* captions / footnotes */
-    --line:      #E3E2DA;   /* hairlines */
-    --accent:    #1B6B5B;   /* trustworthy fintech teal */
-    --accent-ink:#0F4338;   /* darker accent for hover */
-    --danger:    #B3402E;   /* used sparingly for "cost" emphasis */
+    --bg:        #FAFAF7;
+    --bg-tint:   #F2F1EA;
+    --ink:       #16181D;
+    --ink-soft:  #4A4E57;
+    --ink-faint: #8A8E97;
+    --line:      #E3E2DA;
+    --accent:    #1B6B5B;
+    --accent-ink:#0F4338;
+    --danger:    #B3402E;
     --maxw:      1120px;
     --radius:    16px;
   }
@@ -206,101 +200,6 @@
   .card p { margin: 0; color: var(--ink-soft); font-size: 16px; }
   .card p .hl { color: var(--danger); font-weight: 600; }
 
-  /* ---------- Hero grid ---------- */
-  .hero-wrap {
-    display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: center;
-  }
-  .hero-copy { min-width: 0; }
-  .hero-visual { display: flex; justify-content: flex-end; }
-  .app-frame {
-    width: 380px; background: #fff;
-    border: 1px solid var(--line); border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.04), 0 20px 60px -20px rgba(0,0,0,.14);
-    overflow: hidden; font-size: 14px;
-  }
-  .app-titlebar {
-    display: flex; align-items: center; gap: 6px;
-    padding: 14px 16px 10px; border-bottom: 1px solid var(--line); background: var(--bg);
-  }
-  .app-titlebar-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .app-titlebar-dot:nth-child(1) { background: #FF5F57; }
-  .app-titlebar-dot:nth-child(2) { background: #FFBD2E; }
-  .app-titlebar-dot:nth-child(3) { background: #28CA41; }
-  .app-titlebar-label { margin-left: 8px; font-size: 12px; font-weight: 600; color: var(--ink-faint); }
-  .app-body { padding: 18px 16px; }
-  .app-progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .app-progress-label { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
-  .app-progress-pct { font-size: 12px; font-weight: 700; color: var(--danger); }
-  .app-progress-track { height: 4px; background: var(--line); border-radius: 999px; margin-bottom: 16px; }
-  .app-progress-fill { height: 4px; width: 43%; background: var(--accent); border-radius: 999px; }
-  .app-step {
-    display: flex; align-items: center; gap: 10px;
-    padding: 9px 10px; border-radius: 8px; margin-bottom: 4px; font-size: 13px; font-weight: 500;
-  }
-  .app-step .s-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; }
-  .app-step.done { color: var(--ink-faint); }
-  .app-step.done .s-icon { background: color-mix(in srgb, var(--accent) 15%, #fff); color: var(--accent); }
-  .app-step.active { background: color-mix(in srgb, var(--accent) 8%, #fff); color: var(--ink); font-weight: 700; border: 1px solid color-mix(in srgb, var(--accent) 25%, #fff); }
-  .app-step.active .s-icon { background: var(--accent); color: #fff; }
-  .app-step.pending { color: #B5B8BF; }
-  .app-step.pending .s-icon { background: var(--line); color: var(--ink-faint); }
-  .app-step.danger-step { background: #FEF0EE; color: var(--danger); font-weight: 600; }
-  .app-step.danger-step .s-icon { background: #FDD5CF; color: var(--danger); }
-  .app-abandon {
-    margin: 8px 0 4px; padding: 9px 12px;
-    background: #FEF0EE; border-radius: 8px; border-left: 3px solid var(--danger);
-    font-size: 12px; font-weight: 700; color: var(--danger);
-    display: flex; align-items: center; gap: 8px;
-  }
-
-  /* ---------- Gauntlet track ---------- */
-  .gauntlet-section { margin-top: 52px; }
-  .gauntlet-label { font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 14px; }
-  .gauntlet-label strong { color: var(--ink); }
-  .gauntlet-track { display: flex; flex-wrap: wrap; gap: 8px; position: relative; }
-  .g-step {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 999px;
-    border: 1.5px solid; white-space: nowrap; letter-spacing: .01em;
-  }
-  .g-step .g-n { font-size: 10px; opacity: .6; }
-  .g-ok   { background: #F0EFEA; border-color: #D6D5CD; color: #4A4E57; }
-  .g-warn { background: #FEF3E2; border-color: #F6B73C; color: #7A4E0A; }
-  .g-danger { background: #FEE9E5; border-color: #D94F3C; color: #8B2015; font-weight: 700; }
-  .g-done { background: color-mix(in srgb, var(--accent) 10%, #fff); border-color: color-mix(in srgb, var(--accent) 35%, #fff); color: var(--accent-ink); }
-  .drop-banner {
-    width: 100%; margin: 8px 0 0;
-    background: #FEF0EE; border: 1px solid #F4C5BE; border-radius: 10px;
-    padding: 10px 16px; display: flex; align-items: center; gap: 10px;
-    font-size: 13px; font-weight: 700; color: var(--danger);
-  }
-
-  /* ---------- Isotype section ---------- */
-  .iso-section { background: #0F1115; color: #fff; padding: 84px 0; }
-  .iso-section .section-tag { color: color-mix(in srgb, var(--accent) 60%, #fff); }
-  .iso-layout {
-    display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center;
-    margin-top: 48px;
-  }
-  .iso-big {
-    font-size: clamp(80px, 14vw, 140px); font-weight: 800; line-height: .9;
-    letter-spacing: -0.04em; color: #fff;
-    font-variant-numeric: tabular-nums;
-  }
-  .iso-big span { color: color-mix(in srgb, var(--accent) 60%, #fff); font-size: .65em; }
-  .iso-stat-cap { font-size: 20px; color: #C7C9CE; margin: 24px 0 14px; max-width: 44ch; line-height: 1.4; }
-  .iso-stat-cap strong { color: #fff; }
-  .iso-src { font-size: 12.5px; color: #666B74; text-decoration: none; border-bottom: 1px dotted #444; }
-  .iso-src:hover { color: #fff; border-color: #fff; }
-  .iso-grid {
-    display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px 4px;
-  }
-  .iso-grid .person { color: #2A2E35; display: block; line-height: 0; }
-  .iso-grid .person.made-it { color: var(--accent); transition: color .5s ease; }
-  .iso-legend { margin-top: 14px; font-size: 12px; color: #666B74; display: flex; gap: 16px; }
-  .iso-legend .leg-lost { color: #2A2E35; }
-  .iso-legend .leg-made { color: var(--accent); }
-
   /* ---------- The turn ---------- */
   .turn { text-align: left; }
   .turn .big {
@@ -353,14 +252,10 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 880px) {
-    .hero-wrap  { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
-    .pain-grid  { grid-template-columns: 1fr; }
-    .stat-grid  { grid-template-columns: 1fr 1fr; }
-    .why-grid   { grid-template-columns: 1fr; }
-    .turn ul    { grid-template-columns: 1fr; }
-    .iso-layout { grid-template-columns: 1fr; gap: 32px; }
-    .iso-grid   { max-width: 260px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid  { grid-template-columns: 1fr; }
+    .turn ul   { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .hero { padding: 64px 0 48px; }
@@ -372,9 +267,6 @@
     .hero-actions { flex-direction: column; align-items: stretch; }
     .btn-primary { justify-content: center; }
     .btn-ghost { justify-content: center; }
-    .gauntlet-track .g-step { font-size: 11px; padding: 6px 10px; }
-    .iso-section { padding: 60px 0; }
-    .iso-big { font-size: clamp(64px, 18vw, 100px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -388,7 +280,6 @@
 <!-- ================= TOP BAR ================= -->
 <header class="topbar">
   <div class="wrap">
-    <!-- EDIT: your name -->
     <div class="brand">Batuhan Doğan<span>.</span></div>
     <a class="top-cta" href="#talk">Call me &rsaquo;</a>
   </div>
@@ -396,82 +287,21 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="wrap hero-wrap">
-
-    <!-- Left: copy -->
-    <div class="hero-copy">
-      <span class="eyebrow reveal"><span class="dot"></span> Fintech UX &middot; The harder discipline</span>
-      <h1 class="hero-title reveal">
-        Your onboarding is losing <em>2&nbsp;out&nbsp;of&nbsp;3&nbsp;users</em>. Before they ever see your product.
-      </h1>
-      <p class="hero-sub reveal">
-        KYC requirements, compliance flows and trust signals don&rsquo;t come with good UX by default. Most fintech teams find out the hard way &mdash; after they&rsquo;ve already shipped.
-      </p>
-      <div class="hero-actions reveal">
-        <a class="btn-primary" href="#talk">
-          Let&rsquo;s fix your funnel
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn-ghost" href="#problem">See what&rsquo;s breaking it &darr;</a>
-      </div>
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span> UX Designer · Fintech specialist</span>
+    <h1 class="hero-title reveal">
+      In fintech, a confusing screen isn&rsquo;t <span class="strike">bad UX</span>. It&rsquo;s <em>churn, a compliance flag, and lost trust</em> — all at once.
+    </h1>
+    <p class="hero-sub reveal">
+      I&rsquo;m <b>Batuhan Doğan</b>, a UX designer who works <b>only</b> in fintech — onboarding, KYC, payments, money movement and the trust signals around them. The screens where one wrong step costs you a customer, a regulator&rsquo;s attention, or both.
+    </p>
+    <div class="hero-actions reveal">
+      <a class="btn-primary" href="#talk">
+        Let&rsquo;s talk about your funnel
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn-ghost" href="#why">See why fintech breaks normal UX &darr;</a>
     </div>
-
-    <!-- Right: app-frame illustration (desktop only) -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="app-frame">
-        <div class="app-titlebar">
-          <div class="app-titlebar-dot"></div>
-          <div class="app-titlebar-dot"></div>
-          <div class="app-titlebar-dot"></div>
-          <span class="app-titlebar-label">Create your account</span>
-        </div>
-        <div class="app-body">
-          <div class="app-progress-row">
-            <span class="app-progress-label">Step 6 of 14</span>
-            <span class="app-progress-pct">42% complete</span>
-          </div>
-          <div class="app-progress-track"><div class="app-progress-fill"></div></div>
-
-          <div class="app-step done">
-            <span class="s-icon">✓</span> Email address
-          </div>
-          <div class="app-step done">
-            <span class="s-icon">✓</span> Phone verification
-          </div>
-          <div class="app-step done">
-            <span class="s-icon">✓</span> Full name
-          </div>
-          <div class="app-step done">
-            <span class="s-icon">✓</span> Date of birth
-          </div>
-          <div class="app-step done">
-            <span class="s-icon">✓</span> Home address
-          </div>
-          <div class="app-step active">
-            <span class="s-icon">→</span> SSN / Tax ID
-          </div>
-
-          <div class="app-abandon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 13H1L7 1Z" stroke="#B3402E" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 5.5V8M7 10h.01" stroke="#B3402E" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Most users quit around here
-          </div>
-
-          <div class="app-step danger-step">
-            <span class="s-icon">!</span> ID document upload
-          </div>
-          <div class="app-step danger-step">
-            <span class="s-icon">!</span> Selfie / liveness check
-          </div>
-          <div class="app-step pending">
-            <span class="s-icon">…</span> KYC review (waiting)
-          </div>
-          <div class="app-step pending">
-            <span class="s-icon">…</span> AML check (waiting)
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -481,41 +311,14 @@
     <p class="section-tag reveal">The reality you&rsquo;re shipping into</p>
     <h2 class="reveal">Your users don&rsquo;t rage-quit because they hate you. They quit because the moment got hard, scary, or slow.</h2>
     <p class="lead reveal">
-      You launched on the promise of a frictionless experience. Then legal, risk, and the banking partner showed up. <b>This is what your signup actually looks like.</b>
+      You raised on the promise of a frictionless experience. Then legal, risk and the banking partner showed up — and now your signup is a 14-step gauntlet. <b>Most of the people who tap &ldquo;Get started&rdquo; never finish.</b> The ones who do are nervous about handing a brand-new app their ID, their bank login, their money.
     </p>
-
-    <!-- 14-step gauntlet visualization -->
-    <div class="gauntlet-section reveal">
-      <p class="gauntlet-label"><strong>A typical fintech onboarding flow</strong> — 14 steps, regulated at every turn</p>
-
-      <div class="gauntlet-track">
-        <span class="g-step g-ok"><span class="g-n">1</span> Email</span>
-        <span class="g-step g-ok"><span class="g-n">2</span> Password</span>
-        <span class="g-step g-warn"><span class="g-n">3</span> Phone verify</span>
-        <span class="g-step g-ok"><span class="g-n">4</span> Full name</span>
-        <span class="g-step g-ok"><span class="g-n">5</span> Address</span>
-        <span class="g-step g-ok"><span class="g-n">6</span> Date of birth</span>
-        <span class="g-step g-danger"><span class="g-n">7</span> SSN / Tax ID</span>
-        <span class="g-step g-danger"><span class="g-n">8</span> ID document upload</span>
-        <span class="g-step g-danger"><span class="g-n">9</span> Selfie / liveness</span>
-        <span class="g-step g-warn"><span class="g-n">10</span> Bank link</span>
-        <span class="g-step g-danger"><span class="g-n">11</span> KYC review&hellip;</span>
-        <span class="g-step g-danger"><span class="g-n">12</span> AML check&hellip;</span>
-        <span class="g-step g-ok"><span class="g-n">13</span> Risk score</span>
-        <span class="g-step g-done"><span class="g-n">14</span> Approved ✓</span>
-
-        <div class="drop-banner">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 14H1.5L8 1.5Z" stroke="#B3402E" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6v3.5M8 11.5h.01" stroke="#B3402E" stroke-width="1.6" stroke-linecap="round"/></svg>
-          Steps 7&ndash;12 are where most users abandon &mdash; and every one of them is legally required. You can&rsquo;t remove them. You can only design them better.
-        </div>
-      </div>
-    </div>
 
     <div class="pain-grid">
       <div class="pain reveal">
         <div class="num">01</div>
         <h3>The funnel leaks where it matters most</h3>
-        <p>Every KYC field, document upload and verification wait is a fresh exit. Drop-off clusters exactly where you finally make money.</p>
+        <p>Every KYC field, document upload and verification wait is a fresh exit. The drop-off clusters exactly where you finally make money.</p>
       </div>
       <div class="pain reveal">
         <div class="num">02</div>
@@ -531,38 +334,19 @@
   </div>
 </section>
 
-<!-- ================= ISOTYPE VISUALIZATION ================= -->
-<section class="iso-section" id="numbers">
-  <div class="wrap">
-    <p class="section-tag reveal">The abandonment reality</p>
-    <div class="iso-layout reveal">
-
-      <div>
-        <div class="iso-big">68<span>%</span></div>
-        <p class="iso-stat-cap">of people who tap &ldquo;Get started&rdquo; on a financial app <strong>never finish signup</strong> — and the rate is still climbing.</p>
-        <a class="iso-src" href="https://www.theskinsfactory.com/uiux-design-blog/fintech-onboarding-ux-design" target="_blank" rel="noopener">Source: Signicat, Battle to Onboard</a>
-      </div>
-
-      <div>
-        <div class="iso-grid" id="isoGrid"></div>
-        <div class="iso-legend">
-          <span><span class="leg-lost">&#9632;</span> Abandoned (68)</span>
-          <span><span class="leg-made">&#9632;</span> Completed (32)</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ================= STAT BAND ================= -->
-<section class="stats">
+<section class="stats" id="numbers">
   <div class="wrap">
-    <p class="section-tag reveal">More of the same picture</p>
-    <h2 class="reveal">The abandonment isn&rsquo;t the only number that should worry you.</h2>
-    <p class="lead reveal">Across trust, compliance cost, and onboarding speed — the data tells the same story.</p>
+    <p class="section-tag reveal">What the data says it&rsquo;s costing you</p>
+    <h2 class="reveal">These aren&rsquo;t edge cases. This is the fintech baseline.</h2>
+    <p class="lead reveal">Industry research keeps landing on the same uncomfortable picture — the hard part isn&rsquo;t acquiring users, it&rsquo;s getting them through the door and keeping them.</p>
 
     <div class="stat-grid">
+      <div class="stat reveal">
+        <div class="figure" data-count="68" data-suffix="%">0<span class="unit">%</span></div>
+        <p class="cap">of consumers abandon a financial application before they finish it — and it&rsquo;s rising.</p>
+        <a class="src" href="https://www.theskinsfactory.com/uiux-design-blog/fintech-onboarding-ux-design" target="_blank" rel="noopener">Source: Signicat, Battle to Onboard</a>
+      </div>
       <div class="stat reveal">
         <div class="figure" data-count="78" data-suffix="%">0<span class="unit">%</span></div>
         <p class="cap">will stop using a financial app after a security breach — even if their own data was never touched.</p>
@@ -627,10 +411,10 @@
 <!-- ================= THE TURN ================= -->
 <section class="turn" id="approach">
   <div class="wrap">
-    <p class="section-tag reveal">Who designed this page</p>
-    <p class="big reveal">I&rsquo;m <em>Batuhan Doğan</em> — and this is the exact terrain I design for.</p>
+    <p class="section-tag reveal">Where I come in</p>
+    <p class="big reveal">This is the exact terrain I design for — <em>not adjacent to it, all of it.</em></p>
     <p class="lead reveal">
-      I&rsquo;m a UX designer who works <b>only</b> in fintech — onboarding, KYC, payments, and the trust signals around them. I don&rsquo;t treat compliance as the enemy of good UX. I treat it as the constraint that makes fintech UX a craft: turning what&rsquo;s legally required into something that still converts.
+      I don&rsquo;t treat compliance as the enemy of good UX. I treat it as the constraint that makes good fintech UX a craft. I sit between your product, risk and engineering teams and turn the required into the reassuring — so the funnel that <b>has</b> to be careful can still convert.
     </p>
     <ul>
       <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B6B5B"/><path d="M5 9.2l2.6 2.6L13 6.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Onboarding &amp; KYC flows that survive contact with legal</li>
@@ -648,16 +432,15 @@
     <h2 class="reveal">If your funnel is leaking where it matters, let&rsquo;s fix it.</h2>
     <p class="lead reveal">Tell me where users are dropping and what your compliance constraints are. I&rsquo;ll tell you what I&rsquo;d change first. No deck required.</p>
 
-    <!-- EDIT: your name -->
     <div class="call-name reveal">Batuhan Doğan · Fintech UX</div>
 
-    <!-- Desktop: plain-text number (EDIT the number below) -->
+    <!-- Desktop: plain-text number -->
     <div class="call-desktop reveal">
       <span class="label">Call</span>
       <span>+90 536 874 8246</span>
     </div>
 
-    <!-- Mobile: tap-to-call button (EDIT both the tel: link and the visible number) -->
+    <!-- Mobile: tap-to-call button -->
     <div class="call-mobile reveal">
       <a href="tel:+905368748246">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.5 3h3l1.2 3.2-1.8 1.3a10 10 0 0 0 4.5 4.5l1.3-1.8L16.4 14v3a1.5 1.5 0 0 1-1.6 1.5C8.6 18.1 1.9 11.4 1.5 5.1A1.5 1.5 0 0 1 3 3.5z" fill="#fff"/></svg>
@@ -672,7 +455,6 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <!-- EDIT: your name -->
     <div class="who">Batuhan Doğan<span>.</span> &nbsp;UX Designer for Fintech</div>
     <div class="notes">
       Figures cited from <a href="https://www.theskinsfactory.com/uiux-design-blog/fintech-onboarding-ux-design" target="_blank" rel="noopener">Signicat</a>,
@@ -688,33 +470,6 @@
 
     document.getElementById("yr").textContent = new Date().getFullYear();
 
-    // ---- Build isotype grid (100 person icons, default grey) ----
-    var isoGrid = document.getElementById("isoGrid");
-    if (isoGrid) {
-      var personSVG = '<svg viewBox="0 0 10 16" width="10" height="16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="2.5"/><path d="M1 16q0-5 4-5t4 5z"/></svg>';
-      for (var p = 0; p < 100; p++) {
-        var span = document.createElement("span");
-        span.className = "person";
-        span.innerHTML = personSVG;
-        isoGrid.appendChild(span);
-      }
-    }
-
-    // ---- Animate isotype: last 32 light up as teal ----
-    function animateIso() {
-      if (!isoGrid) return;
-      var persons = isoGrid.querySelectorAll(".person");
-      if (reduce) {
-        for (var i = 68; i < 100; i++) { persons[i] && persons[i].classList.add("made-it"); }
-        return;
-      }
-      for (var j = 68; j < 100; j++) {
-        (function(el, delay) {
-          setTimeout(function() { el.classList.add("made-it"); }, delay);
-        })(persons[j], (j - 68) * 35);
-      }
-    }
-
     // ---- Count-up renderer ----
     function render(el, value) {
       var prefix = el.getAttribute("data-prefix") || "";
@@ -727,15 +482,15 @@
       var dur = 1100, start = null;
       function step(ts) {
         if (start === null) start = ts;
-        var prog = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - prog, 3);
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
         render(el, Math.round(eased * target));
-        if (prog < 1) requestAnimationFrame(step);
+        if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
 
-    // ---- Reveal + trigger counts + isotype when entering view ----
+    // ---- Reveal + trigger counts when sections enter view ----
     var reveals = document.querySelectorAll(".reveal");
 
     if (!("IntersectionObserver" in window)) {
@@ -743,7 +498,6 @@
       document.querySelectorAll("[data-count]").forEach(function (el) {
         render(el, parseInt(el.getAttribute("data-count"), 10));
       });
-      animateIso();
       return;
     }
 
@@ -758,17 +512,6 @@
     }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
 
     reveals.forEach(function (r) { io.observe(r); });
-
-    if (isoGrid) {
-      var isoIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          animateIso();
-          isoIO.unobserve(entry.target);
-        });
-      }, { threshold: 0.25 });
-      isoIO.observe(isoGrid);
-    }
   })();
 </script>
 
