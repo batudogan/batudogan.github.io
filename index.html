@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fintech UX & Advisory — For Founders Who Care About Their Users</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F6F2;
+      --surface: #FFFFFF;
+      --border: #E2E0D8;
+      --text-primary: #1A1916;
+      --text-secondary: #6B6860;
+      --text-muted: #9E9C95;
+      --accent: #2F5BE8;
+      --accent-light: #EEF2FD;
+      --warn: #C4622D;
+      --warn-light: #FDF2EC;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text-primary);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 246, 242, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 7px 16px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    /* EYEBROW */
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-headline {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      max-width: 640px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 12px 24px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-secondary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 12px 0;
+    }
+
+    .btn-secondary:hover { color: var(--text-primary); }
+
+    /* SECTION HEADINGS */
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    /* PAIN CARDS */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .pain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .pain-card:hover { border-color: #C5C3BC; }
+
+    .pain-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .pain-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .pain-body {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .pain-feel {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--warn);
+      background: var(--warn-light);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    /* LINKEDIN ADS */
+    .ads-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ad-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .ad-variation {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .ad-headline {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+
+    .ad-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      white-space: pre-line;
+    }
+
+    .ad-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .ad-tag {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    .ad-cta-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* SERVICES */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .service-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .service-body {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* PROCESS */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .step-item:last-child { border-bottom: none; }
+
+    .step-num {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content {}
+    .step-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+    .step-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--text-primary);
+      border-radius: var(--radius);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta-section .eyebrow {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cta-section .section-heading {
+      color: #fff;
+      max-width: 520px;
+      margin: 0 auto 1rem;
+    }
+
+    .cta-section .section-sub {
+      color: rgba(255,255,255,0.6);
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .container { padding: 0 1.25rem; }
+      section { padding: 3.5rem 0; }
+      .hero { padding: 4rem 0 3rem; }
+      .cta-section { padding: 2.5rem 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Fintech UX Studio</a>
+    <ul class="nav-links">
+      <li><a href="#pain">The problem</a></li>
+      <li><a href="#services">How we help</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#ads">LinkedIn ads</a></li>
+    </ul>
+    <a class="nav-cta" href="#cta">Book a free call</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">For fintech founders</div>
+      <h1 class="hero-headline">You've built something people need. Let's make sure they don't leave <em>before they realize it.</em></h1>
+      <p class="hero-sub">Most fintech founders we work with have a solid product. What's hurting them isn't their tech — it's the small moments of confusion, distrust, and friction that quietly push users away during onboarding. We help you find those moments and fix them.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#cta">Book a free discovery call</a>
+        <a class="btn-secondary" href="#pain">See the 5 friction points →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section id="pain">
+    <div class="container">
+      <div class="section-label">What we hear from founders</div>
+      <h2 class="section-heading">These are the moments where users lose trust</h2>
+      <p class="section-sub">None of these are unsolvable. But they're easy to miss when you're deep inside your own product.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">🪪</div>
+          <div class="pain-title">Unclear KYC steps</div>
+          <div class="pain-body">Users start verification not knowing how long it'll take or what documents they'll need. Each new request feels unexpected — and exhausting.</div>
+          <span class="pain-feel">User feels: confused, anxious</span>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🧾</div>
+          <div class="pain-title">Hidden fees</div>
+          <div class="pain-body">They signed up, trusted you, and then discovered a charge they didn't expect. That moment of surprise is often the last interaction they have with your product.</div>
+          <span class="pain-feel">User feels: deceived, let down</span>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🔒</div>
+          <div class="pain-title">Surprise permissions</div>
+          <div class="pain-body">A permission request without context reads as a red flag. Even if it's technically necessary, if users don't understand why — they won't say yes.</div>
+          <span class="pain-feel">User feels: surveilled, unsure</span>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">⏳</div>
+          <div class="pain-title">Slow verification</div>
+          <div class="pain-body">Days of waiting with no updates. Users aren't just bored — they're wondering if something went wrong, and quietly exploring other options while they wait.</div>
+          <span class="pain-feel">User feels: forgotten, uncertain</span>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🫥</div>
+          <div class="pain-title">Non-transparent flows</div>
+          <div class="pain-body">Frozen accounts and rejections with no explanation leave users feeling powerless. When people can't understand what happened, they assume the worst.</div>
+          <span class="pain-feel">User feels: powerless, mistrusted</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">How we help</div>
+      <h2 class="section-heading">We work with you, not just for you</h2>
+      <p class="section-sub">This isn't a plug-and-play audit you receive as a PDF and never act on. We sit alongside your team, understand your constraints, and help you make changes that actually get built.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-title">UX audit</div>
+          <div class="service-body">We walk through your full onboarding flow as a user would — and show you exactly where trust breaks down, with clear context on why each moment matters.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-title">Flow redesign</div>
+          <div class="service-body">We redesign the moments that are costing you users — KYC steps, fee disclosure, permission requests — so users feel guided, not surprised.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-title">Founder advisory</div>
+          <div class="service-body">A thinking partner for the long term. We help you navigate the tension between compliance requirements and user experience — so you don't have to choose between the two.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-label">What it looks like</div>
+      <h2 class="section-heading">A process built around your reality</h2>
+      <p class="section-sub">Four steps. No fluff. Built around the constraints you actually work with.</p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Discovery call — 30 min</div>
+            <div class="step-body">We start by listening. We want to understand your product, your users, and where you feel things are breaking down.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Friction audit — 5 days</div>
+            <div class="step-body">We go through your flow in detail and come back with a clear picture of where trust is being lost and what to prioritize first.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Redesign sprint</div>
+            <div class="step-body">We design the improved flows together, with your compliance constraints in mind — not around them.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Advisory retainer — optional</div>
+            <div class="step-body">For founders who want a long-term partner as their product grows and new friction points emerge.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKEDIN ADS -->
+  <section id="ads">
+    <div class="container">
+      <div class="section-label">LinkedIn ad copy</div>
+      <h2 class="section-heading">3 variations to test</h2>
+      <p class="section-sub">Each targets a different founder mindset. Run them in parallel and let the data tell you which resonates most with your audience.</p>
+      <div class="ads-grid">
+        <div class="ad-card">
+          <div class="ad-variation">Variation A — Problem-led</div>
+          <div class="ad-headline">You built something you believe in. But users are leaving before they ever experience it.</div>
+          <div class="ad-body">You've spent months getting the product right — the compliance, the infrastructure, the pricing. And still, people drop off during onboarding.
+
+It's not your product. It's the moments between the steps. The unclear KYC progress. The fee they didn't expect. The permission request with no explanation.
+
+We help fintech founders find those moments — and fix them, together.</div>
+          <div class="ad-tags">
+            <span class="ad-tag">UX audit in 5 days</span>
+            <span class="ad-tag">End-to-end flow redesign</span>
+            <span class="ad-tag">Advisory included</span>
+          </div>
+          <a class="ad-cta-link" href="#cta">See how it works →</a>
+        </div>
+        <div class="ad-card">
+          <div class="ad-variation">Variation B — Insight-led</div>
+          <div class="ad-headline">Every fintech founder we talk to says the same thing: "Our churn doesn't make sense."</div>
+          <div class="ad-body">It usually does, once you look closely.
+
+Users don't always leave because of your rates or features. They leave because something made them feel uncertain — a step they didn't understand, a fee they discovered too late, a verification process that felt like a black box.
+
+We sit with you, map the full journey your users actually experience, and help you close the gaps that are quietly costing you trust.</div>
+          <a class="ad-cta-link" href="#cta">Let's take a look together →</a>
+        </div>
+        <div class="ad-card">
+          <div class="ad-variation">Variation C — Outcome-led</div>
+          <div class="ad-headline">The best fintech products lose users to onboarding. Not to competitors.</div>
+          <div class="ad-body">You've done the hard part — building a product people actually need. What we focus on is the part that often gets overlooked: how it feels to use it for the very first time.
+
+Unclear KYC steps, surprise permissions, hidden fees — these aren't product failures. They're design gaps. And they're fixable.
+
+We work alongside fintech founders to create onboarding experiences that feel as trustworthy as the product behind them.</div>
+          <div class="ad-tags">
+            <span class="ad-tag">Design + strategy</span>
+            <span class="ad-tag">Founder-facing advisory</span>
+          </div>
+          <a class="ad-cta-link" href="#cta">Let's talk →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="container" id="cta">
+    <div class="cta-section">
+      <div class="eyebrow">Free discovery call</div>
+      <h2 class="section-heading">Not sure if this is what you need?<br>That's exactly what the first call is for.</h2>
+      <p class="section-sub">A free 30-minute conversation. We'll look at your current flow together and give you an honest read on where the biggest opportunities are — no commitment, no pitch deck.</p>
+      <a class="btn-primary" href="mailto:hello@fintechuxstudio.com">Book a free discovery call →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Fintech UX Studio. Built for founders who care about their users.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
