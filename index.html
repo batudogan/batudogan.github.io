@@ -16,8 +16,6 @@
     --ink-2:       #4A4E57;
     --ink-3:       #5B5F68;
     --bg:          #FFFFFF;
-    --maxw:        1120px;
-    --textw:       720px;
   }
 
   * { box-sizing: border-box; }
@@ -39,8 +37,6 @@
 
   .wrap {
     width: 100%;
-    max-width: var(--maxw);
-    margin: 0 auto;
     padding-inline: 16px;
   }
 
@@ -54,12 +50,6 @@
     padding-block: 64px;
   }
 
-  .hero__eyebrow,
-  .hero__title,
-  .hero__sub,
-  .hero__actions,
-  .hero__refs { max-width: var(--textw); }
-
   .hero__eyebrow {
     margin: 0;
     font-size: .8125rem;
@@ -71,7 +61,7 @@
 
   .hero__title {
     margin: 12px 0 16px;
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-size: clamp(2.25rem, 4vw, 3rem);
     font-weight: 700;
     line-height: 1.15;
     text-wrap: balance;
