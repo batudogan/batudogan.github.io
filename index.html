@@ -1,519 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fintech UX Design — Built for the hardest screens in software</title>
-<meta name="description" content="A UX designer specialized in fintech. Onboarding, KYC, trust and compliance flows designed for the one domain where a bad screen costs you customers, capital and credibility." />
+<title>Nihayet</title>
+<meta name="description" content="Startuplar için kullanıcı edinimi ve aktivasyonu danışmanlığı." />
 
-<!-- Inter via Google Fonts, with a system-font fallback so the page works offline -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --bg:        #FAFAF7;
-    --bg-tint:   #F2F1EA;
-    --ink:       #16181D;
-    --ink-soft:  #4A4E57;
-    --ink-faint: #8A8E97;
-    --line:      #E3E2DA;
-    --accent:    #1B6B5B;
-    --accent-ink:#0F4338;
-    --danger:    #B3402E;
-    --maxw:      1120px;
-    --radius:    16px;
+    --ink:         #15171C;
+    --ink-2:       #4A4E57;
+    --ink-3:       #5B5F68;
+    --bg:          #FFFFFF;
+    --maxw:        1120px;
+    --textw:       720px;
   }
 
   * { box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-feature-settings: "ss01", "cv05", "tnum";
-    line-height: 1.55;
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
 
   .wrap {
     width: 100%;
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 0 28px;
+    padding-inline: 16px;
   }
-
-  a { color: inherit; }
-
-  /* ---------- Reveal on scroll ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
-    will-change: opacity, transform;
-  }
-  .reveal.in { opacity: 1; transform: none; }
-
-  /* ---------- Top bar ---------- */
-  .topbar {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--bg) 86%, transparent);
-    backdrop-filter: saturate(140%) blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  .topbar .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .brand { font-weight: 800; letter-spacing: -.01em; font-size: 16px; }
-  .brand span { color: var(--accent); }
-  .topbar .top-cta {
-    font-weight: 600; font-size: 14px; text-decoration: none;
-    color: var(--accent-ink);
-    border: 1px solid var(--accent);
-    padding: 8px 16px; border-radius: 999px;
-    transition: background .2s, color .2s;
-  }
-  .topbar .top-cta:hover { background: var(--accent); color: #fff; }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 96px 0 72px; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-    color: var(--accent-ink);
-    background: color-mix(in srgb, var(--accent) 12%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--bg));
-    padding: 6px 12px; border-radius: 999px;
-    margin-bottom: 28px;
-  }
-  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  #hero { padding-block: 64px; }
 
-  h1.hero-title {
-    font-size: clamp(34px, 6.2vw, 68px);
-    line-height: 1.04;
-    letter-spacing: -0.03em;
-    font-weight: 800;
-    margin: 0 0 24px;
-    max-width: 18ch;
-  }
-  h1.hero-title em { font-style: normal; color: var(--accent); }
-  h1.hero-title .strike { color: var(--ink-faint); text-decoration: line-through; text-decoration-thickness: 2px; }
+  .hero__eyebrow,
+  .hero__title,
+  .hero__sub,
+  .hero__actions,
+  .hero__refs { max-width: var(--textw); }
 
-  .hero-sub {
-    font-size: clamp(17px, 2.1vw, 21px);
-    color: var(--ink-soft);
-    max-width: 56ch;
-    margin: 0 0 36px;
+  .hero__eyebrow {
+    margin: 0;
+    font-size: .8125rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
   }
-  .hero-sub b { color: var(--ink); font-weight: 600; }
 
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--accent); color: #fff; text-decoration: none;
-    font-weight: 700; font-size: 16px;
-    padding: 15px 26px; border-radius: 999px;
-    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 28px -12px color-mix(in srgb, var(--accent) 70%, transparent);
-    transition: transform .15s ease, background .2s ease;
-  }
-  .btn-primary:hover { background: var(--accent-ink); transform: translateY(-1px); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    text-decoration: none; font-weight: 600; font-size: 15px;
-    color: var(--ink-soft); padding: 14px 8px;
-  }
-  .btn-ghost:hover { color: var(--ink); }
-
-  /* ---------- Section scaffolding ---------- */
-  section { padding: 84px 0; }
-  .section-tag {
-    font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--accent); margin: 0 0 16px;
-  }
-  h2 {
-    font-size: clamp(26px, 4vw, 42px);
-    line-height: 1.1; letter-spacing: -0.02em; font-weight: 800;
-    margin: 0 0 20px; max-width: 20ch;
-  }
-  .lead { font-size: clamp(17px, 2vw, 20px); color: var(--ink-soft); max-width: 60ch; margin: 0; }
-
-  /* ---------- Agitation ---------- */
-  .agitate { background: var(--bg-tint); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .agitate .lead b { color: var(--ink); font-weight: 600; }
-  .pain-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    margin-top: 48px;
-  }
-  .pain {
-    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 26px 24px;
-  }
-  .pain .num { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
-  .pain h3 { font-size: 18px; margin: 12px 0 8px; letter-spacing: -.01em; }
-  .pain p { margin: 0; color: var(--ink-soft); font-size: 15px; }
-
-  /* ---------- Stat band ---------- */
-  .stats { background: var(--ink); color: #fff; }
-  .stats .section-tag { color: color-mix(in srgb, var(--accent) 60%, #fff); }
-  .stats h2 { color: #fff; }
-  .stats .lead { color: #C7C9CE; }
-  .stat-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px;
-    margin-top: 56px;
-  }
-  .stat { border-top: 1px solid rgba(255,255,255,.16); padding-top: 22px; }
-  .stat .figure {
-    font-size: clamp(46px, 7vw, 76px); font-weight: 800; line-height: 1;
-    letter-spacing: -0.03em;
-    color: #fff;
-    font-variant-numeric: tabular-nums;
-  }
-  .stat .figure .unit { color: color-mix(in srgb, var(--accent) 55%, #fff); }
-  .stat .cap { margin: 16px 0 10px; font-size: 15.5px; color: #E4E5E8; max-width: 30ch; }
-  .stat .src { font-size: 12.5px; color: #989BA2; text-decoration: none; border-bottom: 1px dotted #6b6e75; }
-  .stat .src:hover { color: #fff; border-color: #fff; }
-
-  /* ---------- Why different (cards) ---------- */
-  .why-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
-    margin-top: 52px;
-  }
-  .card {
-    border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 32px 30px; background: var(--bg);
-    position: relative; overflow: hidden;
-  }
-  .card::before {
-    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent);
-  }
-  .card .k {
-    font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .card h3 { font-size: clamp(20px, 2.4vw, 25px); margin: 0 0 12px; letter-spacing: -.015em; line-height: 1.2; }
-  .card p { margin: 0; color: var(--ink-soft); font-size: 16px; }
-  .card p .hl { color: var(--danger); font-weight: 600; }
-
-  /* ---------- The turn ---------- */
-  .turn { text-align: left; }
-  .turn .big {
-    font-size: clamp(26px, 3.8vw, 40px); font-weight: 800; letter-spacing: -.02em;
-    line-height: 1.18; max-width: 24ch; margin: 0 0 24px;
-  }
-  .turn .big em { font-style: normal; color: var(--accent); }
-  .turn .lead { max-width: 62ch; }
-  .turn ul {
-    list-style: none; padding: 0; margin: 36px 0 0;
-    display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px 32px; max-width: 760px;
-  }
-  .turn li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--ink); }
-  .turn li svg { flex: 0 0 auto; margin-top: 3px; }
-
-  /* ---------- Call CTA ---------- */
-  .cta { background: var(--bg-tint); border-top: 1px solid var(--line); text-align: center; }
-  .cta h2 { margin-left: auto; margin-right: auto; }
-  .cta .lead { margin: 0 auto 36px; }
-  .call-name { font-weight: 700; font-size: 18px; margin-bottom: 6px; }
-
-  /* desktop: plain-text number; mobile: tap-to-call button */
-  .call-desktop {
-    display: inline-flex; align-items: baseline; gap: 14px;
-    font-size: clamp(28px, 4.4vw, 46px); font-weight: 800; letter-spacing: -.02em;
+  .hero__title {
+    margin: 12px 0 16px;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
     color: var(--ink);
-    font-variant-numeric: tabular-nums;
-  }
-  .call-desktop .label {
-    font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-    color: var(--accent); align-self: center;
-  }
-  .call-mobile { display: none; }
-  .call-mobile a {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    background: var(--accent); color: #fff; text-decoration: none;
-    font-weight: 700; font-size: 19px; padding: 18px 24px; border-radius: 14px;
-    box-shadow: 0 12px 30px -14px color-mix(in srgb, var(--accent) 80%, transparent);
-  }
-  .cta .micro { margin-top: 22px; font-size: 14px; color: var(--ink-faint); }
-
-  /* ---------- Footer ---------- */
-  footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
-  footer .who { font-weight: 700; }
-  footer .who span { color: var(--accent); }
-  footer .notes { font-size: 12.5px; color: var(--ink-faint); max-width: 60ch; }
-  footer a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dotted var(--line); }
-  footer a:hover { color: var(--ink); }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 880px) {
-    .pain-grid { grid-template-columns: 1fr; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
-    .why-grid  { grid-template-columns: 1fr; }
-    .turn ul   { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    .hero { padding: 64px 0 48px; }
-    section { padding: 60px 0; }
-    .stat-grid { grid-template-columns: 1fr; gap: 30px; }
-    .topbar .top-cta { display: none; }
-    .call-desktop { display: none; }
-    .call-mobile  { display: block; max-width: 420px; margin: 0 auto; }
-    .hero-actions { flex-direction: column; align-items: stretch; }
-    .btn-primary { justify-content: center; }
-    .btn-ghost { justify-content: center; }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+  .hero__sub {
+    margin: 0;
+    font-size: 1.125rem;
+    color: var(--ink-2);
   }
+
+  .hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .btn--primary { background: var(--ink); color: #FFFFFF; }
+  .btn--primary:hover { background: var(--bg); color: var(--ink); }
+
+  .btn--secondary { background: transparent; color: var(--ink); }
+  .btn--secondary:hover { background: var(--ink); color: #FFFFFF; }
+
+  .hero__refs {
+    margin: 40px 0 0;
+    font-size: .9375rem;
+    color: var(--ink-3);
+  }
+
+  @media (min-width: 640px) {
+    .hero__actions { flex-direction: row; }
+    .btn { width: auto; }
+  }
+
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 32px; }
+    #hero { padding-block: 120px; }
+    .hero__refs { margin-top: 48px; }
+  }
+
+  /* ---------- Sonradan doldurulacak bölümler ---------- */
+  .stub { scroll-margin-top: 24px; }
 </style>
 </head>
 <body>
 
-<!-- ================= TOP BAR ================= -->
-<header class="topbar">
-  <div class="wrap">
-    <div class="brand">Batuhan Doğan<span>.</span></div>
-    <a class="top-cta" href="#talk">Call me &rsaquo;</a>
-  </div>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="wrap">
-    <span class="eyebrow reveal"><span class="dot"></span> UX Designer · Fintech specialist</span>
-    <h1 class="hero-title reveal">
-      In fintech, a confusing screen isn&rsquo;t <span class="strike">bad UX</span>. It&rsquo;s <em>churn, a compliance flag, and lost trust</em> — all at once.
-    </h1>
-    <p class="hero-sub reveal">
-      I&rsquo;m <b>Batuhan Doğan</b>, a UX designer who works <b>only</b> in fintech — onboarding, KYC, payments, money movement and the trust signals around them. The screens where one wrong step costs you a customer, a regulator&rsquo;s attention, or both.
-    </p>
-    <div class="hero-actions reveal">
-      <a class="btn-primary" href="#talk">
-        Let&rsquo;s talk about your funnel
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a class="btn-ghost" href="#why">See why fintech breaks normal UX &darr;</a>
+<main>
+  <section id="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="hero__eyebrow">Nihayet</p>
+      <h1 id="hero-title" class="hero__title">Startuplar için kullanıcı edinimi ve aktivasyonu</h1>
+      <p class="hero__sub">11 yıl · pazarlama, ürün, tasarım, yazılım</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#degerlendirme">Değerlendirme isteyin</a>
+        <a class="btn btn--secondary" href="#nasil-calisirim">Nasıl çalışırım?</a>
+      </div>
+      <p class="hero__refs">Düğün.com · Doğuş Teknoloji · Softtech · Evam</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= AGITATION ================= -->
-<section class="agitate" id="problem">
-  <div class="wrap">
-    <p class="section-tag reveal">The reality you&rsquo;re shipping into</p>
-    <h2 class="reveal">Your users don&rsquo;t rage-quit because they hate you. They quit because the moment got hard, scary, or slow.</h2>
-    <p class="lead reveal">
-      You raised on the promise of a frictionless experience. Then legal, risk and the banking partner showed up — and now your signup is a 14-step gauntlet. <b>Most of the people who tap &ldquo;Get started&rdquo; never finish.</b> The ones who do are nervous about handing a brand-new app their ID, their bank login, their money.
-    </p>
+  <!-- TODO: içerik sonra eklenecek -->
+  <section id="nasil-calisirim" class="stub" aria-label="Nasıl çalışırım?"></section>
 
-    <div class="pain-grid">
-      <div class="pain reveal">
-        <div class="num">01</div>
-        <h3>The funnel leaks where it matters most</h3>
-        <p>Every KYC field, document upload and verification wait is a fresh exit. The drop-off clusters exactly where you finally make money.</p>
-      </div>
-      <div class="pain reveal">
-        <div class="num">02</div>
-        <h3>One bad moment ends the relationship</h3>
-        <p>A scary error, a frozen transfer, a vague &ldquo;something went wrong&rdquo; on a screen about <em>money</em> — and trust is gone for good.</p>
-      </div>
-      <div class="pain reveal">
-        <div class="num">03</div>
-        <h3>You can&rsquo;t just &ldquo;remove the friction&rdquo;</h3>
-        <p>Half your steps are legally required. The job isn&rsquo;t deleting them — it&rsquo;s designing compliance that doesn&rsquo;t feel like punishment.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= STAT BAND ================= -->
-<section class="stats" id="numbers">
-  <div class="wrap">
-    <p class="section-tag reveal">What the data says it&rsquo;s costing you</p>
-    <h2 class="reveal">These aren&rsquo;t edge cases. This is the fintech baseline.</h2>
-    <p class="lead reveal">Industry research keeps landing on the same uncomfortable picture — the hard part isn&rsquo;t acquiring users, it&rsquo;s getting them through the door and keeping them.</p>
-
-    <div class="stat-grid">
-      <div class="stat reveal">
-        <div class="figure" data-count="68" data-suffix="%">0<span class="unit">%</span></div>
-        <p class="cap">of consumers abandon a financial application before they finish it — and it&rsquo;s rising.</p>
-        <a class="src" href="https://www.theskinsfactory.com/uiux-design-blog/fintech-onboarding-ux-design" target="_blank" rel="noopener">Source: Signicat, Battle to Onboard</a>
-      </div>
-      <div class="stat reveal">
-        <div class="figure" data-count="78" data-suffix="%">0<span class="unit">%</span></div>
-        <p class="cap">will stop using a financial app after a security breach — even if their own data was never touched.</p>
-        <a class="src" href="https://studiospace.com/blog/trust-in-fintech-and-financial-services-trends-and-impacts_159" target="_blank" rel="noopener">Source: IBM Security</a>
-      </div>
-      <div class="stat reveal">
-        <div class="figure" data-count="70" data-suffix="%">0<span class="unit">%</span></div>
-        <p class="cap">of financial institutions lost clients last year to slow onboarding — the highest rate on record.</p>
-        <a class="src" href="https://fintech.global/2025/10/08/70-of-banks-lose-clients-due-to-slow-onboarding/" target="_blank" rel="noopener">Source: Fenergo</a>
-      </div>
-      <div class="stat reveal">
-        <div class="figure" data-count="47" data-suffix="%">0<span class="unit">%</span></div>
-        <p class="cap">of US consumers name data-security worry as their single biggest reason not to adopt a fintech app.</p>
-        <a class="src" href="https://studiospace.com/blog/trust-in-fintech-and-financial-services-trends-and-impacts_159" target="_blank" rel="noopener">Source: industry survey, 2023</a>
-      </div>
-      <div class="stat reveal">
-        <div class="figure" data-count="32" data-suffix="&nbsp;days">0</div>
-        <p class="cap">average time to fully onboard a customer once AML / KYC checks are layered in.</p>
-        <a class="src" href="https://fintech.global/2025/10/08/70-of-banks-lose-clients-due-to-slow-onboarding/" target="_blank" rel="noopener">Source: Fenergo</a>
-      </div>
-      <div class="stat reveal">
-        <div class="figure" data-count="73" data-prefix="$" data-suffix="M">0</div>
-        <p class="cap">average annual spend, per firm, just to operate AML / KYC compliance.</p>
-        <a class="src" href="https://fintech.global/2025/10/08/70-of-banks-lose-clients-due-to-slow-onboarding/" target="_blank" rel="noopener">Source: Fenergo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHY FINTECH IS DIFFERENT ================= -->
-<section id="why">
-  <div class="wrap">
-    <p class="section-tag reveal">Why fintech isn&rsquo;t like your last product</p>
-    <h2 class="reveal">The rules that make consumer apps fun to design are the rules fintech can&rsquo;t follow.</h2>
-    <p class="lead reveal">A growth designer from social or e-commerce walks in expecting to A/B their way to a clean funnel. Then they hit the four things that make this domain its own discipline.</p>
-
-    <div class="why-grid">
-      <div class="card reveal">
-        <div class="k">Finding 01</div>
-        <h3>Trust is the product, not a feature</h3>
-        <p>In most apps trust is nice-to-have. Here it <em>is</em> the conversion. When <span class="hl">78%</span> walk after a breach they weren&rsquo;t even affected by, every pixel either earns confidence or quietly leaks it.</p>
-      </div>
-      <div class="card reveal">
-        <div class="k">Finding 02</div>
-        <h3>Every flow is regulated</h3>
-        <p>KYC, AML, disclosures, consent — large parts of your UX are dictated by law, not by you. You can&rsquo;t design them away; you can only design them <em>humane</em>. That&rsquo;s a different skill.</p>
-      </div>
-      <div class="card reveal">
-        <div class="k">Finding 03</div>
-        <h3>Friction is mandatory, not optional</h3>
-        <p>&ldquo;Just remove the steps&rdquo; is off the table. The work is sequencing required friction so it feels like protection instead of an interrogation — and so users finish anyway.</p>
-      </div>
-      <div class="card reveal">
-        <div class="k">Finding 04</div>
-        <h3>The cost of bad UX is measured in millions</h3>
-        <p>It&rsquo;s not a higher bounce rate. It&rsquo;s lost capital, <span class="hl">$73M</span>-a-year compliance overhead, regulator scrutiny and runway you can&rsquo;t get back. The stakes don&rsquo;t reset.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= THE TURN ================= -->
-<section class="turn" id="approach">
-  <div class="wrap">
-    <p class="section-tag reveal">Where I come in</p>
-    <p class="big reveal">This is the exact terrain I design for — <em>not adjacent to it, all of it.</em></p>
-    <p class="lead reveal">
-      I don&rsquo;t treat compliance as the enemy of good UX. I treat it as the constraint that makes good fintech UX a craft. I sit between your product, risk and engineering teams and turn the required into the reassuring — so the funnel that <b>has</b> to be careful can still convert.
-    </p>
-    <ul>
-      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B6B5B"/><path d="M5 9.2l2.6 2.6L13 6.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Onboarding &amp; KYC flows that survive contact with legal</li>
-      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B6B5B"/><path d="M5 9.2l2.6 2.6L13 6.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Trust &amp; security moments designed on purpose, not by accident</li>
-      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B6B5B"/><path d="M5 9.2l2.6 2.6L13 6.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Drop-off audits that pinpoint where (and why) money leaks</li>
-      <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B6B5B"/><path d="M5 9.2l2.6 2.6L13 6.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Error, edge-case &amp; money-movement states most teams skip</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= CALL CTA ================= -->
-<section class="cta" id="talk">
-  <div class="wrap">
-    <p class="section-tag reveal">Let&rsquo;s talk</p>
-    <h2 class="reveal">If your funnel is leaking where it matters, let&rsquo;s fix it.</h2>
-    <p class="lead reveal">Tell me where users are dropping and what your compliance constraints are. I&rsquo;ll tell you what I&rsquo;d change first. No deck required.</p>
-
-    <div class="call-name reveal">Batuhan Doğan · Fintech UX</div>
-
-    <!-- Desktop: plain-text number -->
-    <div class="call-desktop reveal">
-      <span class="label">Call</span>
-      <span>+90 536 874 8246</span>
-    </div>
-
-    <!-- Mobile: tap-to-call button -->
-    <div class="call-mobile reveal">
-      <a href="tel:+905368748246">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.5 3h3l1.2 3.2-1.8 1.3a10 10 0 0 0 4.5 4.5l1.3-1.8L16.4 14v3a1.5 1.5 0 0 1-1.6 1.5C8.6 18.1 1.9 11.4 1.5 5.1A1.5 1.5 0 0 1 3 3.5z" fill="#fff"/></svg>
-        Call +90 536 874 8246
-      </a>
-    </div>
-
-    <p class="micro reveal">Prefer email? Replace this line with your address, or keep it phone-only.</p>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="wrap">
-    <div class="who">Batuhan Doğan<span>.</span> &nbsp;UX Designer for Fintech</div>
-    <div class="notes">
-      Figures cited from <a href="https://www.theskinsfactory.com/uiux-design-blog/fintech-onboarding-ux-design" target="_blank" rel="noopener">Signicat</a>,
-      <a href="https://fintech.global/2025/10/08/70-of-banks-lose-clients-due-to-slow-onboarding/" target="_blank" rel="noopener">Fenergo</a> and
-      <a href="https://studiospace.com/blog/trust-in-fintech-and-financial-services-trends-and-impacts_159" target="_blank" rel="noopener">IBM Security / industry trust research</a>. © <span id="yr"></span>.
-    </div>
-  </div>
-</footer>
-
-<script>
-  (function () {
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    document.getElementById("yr").textContent = new Date().getFullYear();
-
-    // ---- Count-up renderer ----
-    function render(el, value) {
-      var prefix = el.getAttribute("data-prefix") || "";
-      var suffix = el.getAttribute("data-suffix") || "";
-      el.innerHTML = prefix + value + suffix;
-    }
-    function countUp(el) {
-      var target = parseInt(el.getAttribute("data-count"), 10);
-      if (reduce) { render(el, target); return; }
-      var dur = 1100, start = null;
-      function step(ts) {
-        if (start === null) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-        render(el, Math.round(eased * target));
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-
-    // ---- Reveal + trigger counts when sections enter view ----
-    var reveals = document.querySelectorAll(".reveal");
-
-    if (!("IntersectionObserver" in window)) {
-      reveals.forEach(function (r) { r.classList.add("in"); });
-      document.querySelectorAll("[data-count]").forEach(function (el) {
-        render(el, parseInt(el.getAttribute("data-count"), 10));
-      });
-      return;
-    }
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("in");
-        var fig = entry.target.querySelector("[data-count]");
-        if (fig && !fig.dataset.done) { fig.dataset.done = "1"; countUp(fig); }
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
-
-    reveals.forEach(function (r) { io.observe(r); });
-  })();
-</script>
+  <!-- TODO: içerik sonra eklenecek -->
+  <section id="degerlendirme" class="stub" aria-label="Değerlendirme"></section>
+</main>
 
 </body>
 </html>
