@@ -16,8 +16,6 @@
     --ink-2:       #4A4E57;
     --ink-3:       #5B5F68;
     --bg:          #FFFFFF;
-    --maxw:        1120px;
-    --textw:       720px;
   }
 
   * { box-sizing: border-box; }
@@ -39,7 +37,7 @@
 
   .wrap {
     width: 100%;
-    max-width: var(--maxw);
+    max-width: 1120px;
     margin: 0 auto;
     padding-inline: 16px;
   }
@@ -54,12 +52,6 @@
     padding-block: 64px;
   }
 
-  .hero__eyebrow,
-  .hero__title,
-  .hero__sub,
-  .hero__actions,
-  .hero__refs { max-width: var(--textw); }
-
   .hero__eyebrow {
     margin: 0;
     font-size: .8125rem;
@@ -71,7 +63,7 @@
 
   .hero__title {
     margin: 12px 0 16px;
-    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-size: clamp(2.25rem, 4vw, 3rem);
     font-weight: 700;
     line-height: 1.15;
     text-wrap: balance;
@@ -81,6 +73,7 @@
   .hero__sub {
     margin: 0;
     font-size: 1.125rem;
+    line-height: 1.6;
     color: var(--ink-2);
   }
 
@@ -145,8 +138,8 @@
   <section id="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <p class="hero__eyebrow">Nihayet</p>
-      <h1 id="hero-title" class="hero__title">Startuplar için kullanıcı edinimi ve aktivasyonu</h1>
-      <p class="hero__sub">11 yıl · pazarlama, ürün, tasarım, yazılım</p>
+      <h1 id="hero-title" class="hero__title">Batuhan Doğan, 11 yıllık tecrübesiyle startupların kullanıcı edinimi ve aktivasyonunu artık uçtan uca üstleniyor</h1>
+      <p class="hero__sub">Çünkü bu işi tek bir departmandan bakarak çözmek mümkün değil. 11 yılda pazarlama, ürün, tasarım ve yazılım ekiplerinde çalıştım; bir kullanıcının nerede kaybolduğunu dört taraftan da görebiliyorum.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#degerlendirme">Değerlendirme isteyin</a>
         <a class="btn btn--secondary" href="#nasil-calisirim">Nasıl çalışırım?</a>
