@@ -107,9 +107,6 @@
   .btn--primary { background: var(--ink); color: #FFFFFF; }
   .btn--primary:hover { background: var(--bg); color: var(--ink); }
 
-  .btn--secondary { background: transparent; color: var(--ink); }
-  .btn--secondary:hover { background: var(--ink); color: #FFFFFF; }
-
   .hero__refs {
     margin: 40px 0 0;
     font-size: .9375rem;
@@ -117,7 +114,7 @@
   }
 
   @media (min-width: 640px) {
-    .hero__actions { flex-direction: row; }
+    .hero__actions { align-items: flex-start; }
     .btn { width: auto; }
   }
 
@@ -126,9 +123,6 @@
     #hero { padding-block: 120px; }
     .hero__refs { margin-top: 48px; }
   }
-
-  /* ---------- Sonradan doldurulacak bölümler ---------- */
-  .stub { scroll-margin-top: 24px; }
 </style>
 </head>
 <body>
@@ -140,18 +134,11 @@
       <h1 id="hero-title" class="hero__title">Batuhan Doğan, 11 yıllık tecrübesiyle startupların kullanıcı edinimi ve aktivasyonunu artık uçtan uca üstleniyor</h1>
       <p class="hero__sub">Çünkü bu işi tek bir departmandan bakarak çözmek mümkün değil. 11 yılda pazarlama, ürün, tasarım ve yazılım ekiplerinde çalıştım; bir kullanıcının nerede kaybolduğunu dört taraftan da görebiliyorum.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#degerlendirme">Değerlendirme isteyin</a>
-        <a class="btn btn--secondary" href="#nasil-calisirim">Nasıl çalışırım?</a>
+        <a class="btn btn--primary" href="tel:+905368748246" aria-label="Ara: +90 536 874 82 46">Ara</a>
       </div>
       <p class="hero__refs">Düğün.com · Doğuş Teknoloji · Softtech · Evam</p>
     </div>
   </section>
-
-  <!-- TODO: içerik sonra eklenecek -->
-  <section id="nasil-calisirim" class="stub" aria-label="Nasıl çalışırım?"></section>
-
-  <!-- TODO: içerik sonra eklenecek -->
-  <section id="degerlendirme" class="stub" aria-label="Değerlendirme"></section>
 </main>
 
 </body>
